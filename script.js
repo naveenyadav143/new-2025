@@ -1,6 +1,6 @@
 // Countdown Timer
 const countdown = document.getElementById('countdown');
-const targetDate = new Date('December 31, 2024 23:59:00').getTime();
+const targetDateIST = new Date('2024-12-31T18:29:00Z').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
