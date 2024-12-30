@@ -1,6 +1,8 @@
-// Countdown Timer
-const countdown = document.getElementById('countdown');
-const targetDateIST = new Date('2025-12-31T18:29:00Z').getTime();
+const countdownElement = document.getElementById('countdown');
+const overlay = document.getElementById('overlay');
+
+// Set target date and time for IST
+const targetDate = new Date('2024-12-31T23:59:00+05:30').getTime();
 
 function updateCountdown() {
     const now = new Date().getTime();
@@ -11,39 +13,17 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-    // When the countdown is finished
     if (distance < 0) {
         clearInterval(timer);
         showOverlay();
     }
 }
 
-const timer = setInterval(updateCountdown, 1000);
-
-// Hearts Animation
-const heartsContainer = document.querySelector('.hearts');
-
-function createHeart() {
-    const heart = document.createElement('div');
-    heart.className = 'heart';
-    heart.style.left = `${Math.random() * 100}vw`;
-    heart.style.animationDuration = `${Math.random() * 2 + 3}s`;
-    heartsContainer.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 5000);
-}
-
-setInterval(createHeart, 300);
-
-// Overlay Message
-const overlay = document.getElementById('overlay');
-const audio = document.getElementById('background-audio');
-
 function showOverlay() {
-    overlay.classList.remove('hidden');
-    audio.pause(); // Stop background music
+    countdownElement.innerHTML = "Happy New Year!";
+    overlay.style.display = "flex";
 }
+
+const timer = setInterval(updateCountdown, 1000);
