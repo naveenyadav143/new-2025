@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Love</title>
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1600x900/?love,romantic') no-repeat center center/cover;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 182, 193, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+        .popup h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #d63384;
+        }
+        .popup p {
+            font-size: 18px;
+            color: #333;
+        }
+        .popup img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-top: 10px;
+        }
+        @keyframes hearts {
+            0% { transform: translateY(0px); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            animation: hearts 4s linear infinite;
+        }
+    </style>
+</head>
+<body onload="showPopup()">
+    <audio autoplay loop>
+        <source src="c:\Users\navee\Downloads\i-wanna-be-yours-artic-monke-63563.mp3" type="audio/mpeg">
+    </audio>
+    
+    <div class="popup" id="letter">
+        <h2>Happy Birthday My Love ❤️</h2>
+        <p>My dear, you are the most precious gift in my life. I am so lucky to have you by my side. Wishing you a wonderful birthday filled with love and joy! 💖</p>
+        <img src="IMG20241210072222 (2).jpg" alt="Our Picture">
+    </div>
+    
+    <script>
+        function showPopup() {
+            document.getElementById("letter").style.display = "block";
+        }
+        function createHearts() {
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement("div");
+                heart.className = "heart";
+                heart.innerHTML = "❤️";
+                heart.style.left = Math.random() * 100 + "%";
+                heart.style.top = Math.random() * 100 + "%";
+                heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }
+        }
+        setInterval(createHearts, 1000);
+    </script>
+</body>
+</html>
